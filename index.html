@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>可以和我和好吗？</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img id="dog-img" src="images/img1.jpeg" alt="狗狗" />
+        <h1 id="main-text">可以和我和好吗？</h1>
+        <div class="buttons">
+            <button class="yes-btn" id="yesBtn">和好</button>
+            <button class="no-btn" id="noBtn">不要</button>
+        </div>
+    </div>
+
+    <script>
+        let imgList = [
+            "images/img1.jpeg",
+            "images/img2.jpeg",
+            "images/img3.jpeg",
+            "images/img4.jpeg",
+            "images/img5.jpeg",
+            "images/final.jpeg"
+        ];
+        let noTexts = ["不要", "对不起，我知道错了", "狗狗币都给你", "给个台阶嘛", "再想想？", "喜欢你 (>ω<)"];
+        let currentIndex = 0;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const yesBtn = document.getElementById("yesBtn");
+            const noBtn = document.getElementById("noBtn");
+            const dogImg = document.getElementById("dog-img");
+            const mainText = document.getElementById("main-text");
+            const buttons = document.querySelector(".buttons");
+
+            yesBtn.addEventListener("click", function () {
+                dogImg.src = imgList[imgList.length - 1];
+                mainText.innerText = "！！喜欢你！！(>ω<)";
+                buttons.style.display = "none";
+            });
+
+            noBtn.addEventListener("click", function () {
+                currentIndex++;
+                if (currentIndex >= imgList.length - 1) {
+                    currentIndex = imgList.length - 2;
+                }
+                dogImg.src = imgList[currentIndex];
+                noBtn.innerText = noTexts[currentIndex];
+            });
+        });
+    </script>
+</body>
+</html>
